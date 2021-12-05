@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Animated, TextInput } from 'react-native';
+import {
+    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity } from 'react-native';
 import { Portal, Modal, Button } from 'react-native-paper';
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
+import { TouchableOpacityBase } from 'react-native';
+
 
 
 const styles = StyleSheet.create({
@@ -31,18 +35,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     textText: {
-        fontFamily: 'Rubik',
         fontSize: 18,
         marginRight: 30
     },
     textBold: {
-        fontFamily: 'Rubik',
         fontWeight: 'bold',
         fontSize: 18,
         marginRight: 20
     },
     textModal: {
-        fontFamily: 'Rubik',
         fontWeight: 'bold',
         fontSize: 22,
         margin: 10
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
         marginRight: 34
     },
     textUp: {
-        fontFamily: 'Rubik',
         fontWeight: 'bold',
         fontSize: 18,
         marginTop: 15
@@ -121,52 +121,98 @@ const styles = StyleSheet.create({
 
 export default function ModalVeiculos() {
 
-    const [data, setData] = useState([''])
+    const initialTutorialState = {
+        id: null,
+        placa: "",
+        ano: "",
+        model: {
+            id: null,
+            modelo: "",
+            brand: {
+                id: null,
+                marca: "",
+            }
+        },
+        services: {
+            id: null,
+            valorPago: null,
+            data: "",
+            tpRecebeServico: {
+                id: null,
+                nome: ""
+            },
+            loja: {
+                id: null,
+                nome: "",
+                endereco: ""
+            }
+        },
+        user: {
+            id: null,
+            cpf: "",
+            username: "",
+            email: "",
+            phone: "",
+            password: "",
+            enable: true,
+        },
+        abasteci: {
+            id: null,
+            vlPago: null,
+            dataTime: "",
+            combustivel: {
+                id: null,
+                tCombustivel: ""
+            }
+        },
+        veiculoCondicao: {
+            id: null,
+            condicao: ""
+        }
+    };
+
+    const [data, setData] = useState([])
+    const [id, setId] = useState(null)
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
     const [modalVisibleB, setModalVisibleB] = useState(false);
 
     const getData = async () => {
 
-        const response = await api.get("/")
-        setData(response.data.content)
-        //console.log(response.data.content)
+        const response = await api.get("/user")
+        setData(response.data)
+        console.log(response.data)
     }
 
-
-    const handleRemove = async (e) => {
-        await api.delete(`/${e}`)
-            .then(res => {
-                console.log(res)
-            })
+    const handleRemove = async (id) => {
+        await api.delete(`/${id}`)
+        console.log(id)
+        alert('Veiculo deletado com sucesso')
+        getData()
     }
 
+    const navigation = useNavigation();
 
     useEffect(() => {
         getData()
     }, [])
 
-    useEffect(() => {
-        handleRemove
-    }, [data])
-
-
-
     /* useEffect(() => {
         console.log(data)
-    },[data]) */
+    },[data])  */
 
     return (
         <View>
-            {data.map((veiculos, index) => (
-                <View>
+            {data.map((veiculos) => (
+                <View key={veiculos.id}>
                     <Swipeable
                         renderRightActions={() => (
                             <Animated.View>
                                 <View>
                                     <RectButton
                                         style={styles.delButton}
-                                        onPress={() => setModalVisible(true)}
+                                        onPress={() => handleRemove(veiculos.id)}
                                     >
                                         <Image style={styles.imageButton} source={require('../assets/bin.png')} />
                                     </RectButton>
@@ -186,10 +232,11 @@ export default function ModalVeiculos() {
                             </Animated.View>
                         )}
                     >
-                        <View key={index} style={[styles.modalBack]}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Relatórios', veiculos.id)}>
+                        <View style={[styles.modalBack]}>
                             <View style={styles.flex}>
                                 <View style={styles.textMargin}>
-                                    <Text style={styles.textTitle}>{veiculos.placa}</Text>
+                                    <Text style={styles.textTitle}>{veiculos.id}{veiculos.placa}</Text>
                                     <View style={styles.flex}>
                                         <Text style={styles.textBold}>{veiculos.model.modelo}</Text>
                                         <Text style={styles.textText}>{veiculos.model.brand.marca}</Text>
@@ -203,9 +250,11 @@ export default function ModalVeiculos() {
                             </View>
                             <Text style={styles.textUp}>Último serviço realizado em: {veiculos.services.data}</Text>
                         </View>
+                        </TouchableOpacity>
                     </Swipeable>
                     <Portal>
                         <Modal
+                            key={veiculos.id}
                             contentContainerStyle={styles.modalContent}
                             visible={modalVisible}
                             onDismiss={() => {
@@ -220,10 +269,8 @@ export default function ModalVeiculos() {
                                 }}>
                                     Cancelar
                                 </Button>
-                                <Button style={{ margin: 20 }} color='red' mode="contained" onPress={() => {
-                                    handleRemove(veiculos.id);
-                                }}>
-                                    Delete
+                                <Button style={{ margin: 20 }} color='red' mode="contained" onPress={() => handleRemove(veiculos.id)}>
+                                    Delete {veiculos.id}
                                 </Button>
                             </View>
                         </Modal>
@@ -293,7 +340,6 @@ export default function ModalVeiculos() {
                                         Cancelar
                                     </Button>
                                     <Button style={{ margin: 20 }} color='#2AD14F' mode="contained" onPress={() => {
-                                        handleRemove(veiculos.id);
                                     }}>
                                         Salvar
                                     </Button>
