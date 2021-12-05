@@ -29,7 +29,7 @@ const DrawerNavigator = () => (
             }}>
             <Drawer.Screen name="Login" component={Login}
                 options={{
-                   // headerShown: false,
+                   headerShown: false,
                    //  swipeEnabled: false
                 }}></Drawer.Screen>
             <Drawer.Screen name="Veiculos" component={Veiculos}

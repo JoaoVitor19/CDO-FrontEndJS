@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 
     container: {
         alignItems: 'center',
-        paddingTop: 180
+        paddingTop: 120
     },
 
     input_texto: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Login = ({ token, setToken,navigation }) => {
+const Login = ({ token,navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     
@@ -71,17 +71,18 @@ const Login = ({ token, setToken,navigation }) => {
         }
         
 
-        const { data, status } = await Instance.post('/auth', JSON.stringify(form)) 
-        .then(() => {
-            
-            navigation.navigate('Abastecimento')
-            
-        })
-        .catch(()=>{
-            alert("Email ou Senha incorretos!")
+         
+        try {
+            const { data, status } = await Instance.post('/auth', JSON.stringify(form))
+            alert("feito")
+            navigation.navigate("Relatórios")
 
-        })
-            setToken(`${data.authType} ${data.token}`)  
+          } catch (err) {
+            alert("Email ou senha incorretos!")
+            console.log(`ERROR: ${err}`);
+          }
+      
+            
 
 
 

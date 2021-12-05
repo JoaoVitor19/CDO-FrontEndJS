@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, Animated, TextInput } from 'react-native
 import { Portal, Modal, Button } from 'react-native-paper';
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import api from '../api/veiculo';
-import Veiculos from '../screens/Veiculos/Veiculos';
 
 
 const styles = StyleSheet.create({
