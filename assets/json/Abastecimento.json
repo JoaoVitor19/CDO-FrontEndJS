@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "combustivel": {
+      "id": 1,
+      "tcombustivel": "Gasolina Comum"
+    },
+    "dataTime": "2021-11-03",
+    "litro": 20,
+    "vlLitros": 10.5
+  },
+  {
+    "id": 2,
+    "combustivel": {
+      "id": 2,
+      "tcombustivel": "Gasolina Comum"
+    },
+    "dataTime": "2021-11-03",
+    "litro": 20,
+    "vlLitros": 10.5
+  },
+  {
+    "id": 3,
+    "combustivel": {
+      "id": 3,
+      "tcombustivel": "Gasolina Comum"
+    },
+    "dataTime": "2021-11-03",
+    "litro": 20,
+    "vlLitros": 10.5
+  },
+  {
+    "id": 4,
+    "combustivel": {
+      "id": 3,
+      "tcombustivel": "Gasolina Comum"
+    },
+    "dataTime": "2021-11-03",
+    "litro": 20,
+    "vlLitros": 10.5
+  }
+]
