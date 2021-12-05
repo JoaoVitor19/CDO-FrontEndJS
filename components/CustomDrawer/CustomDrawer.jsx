@@ -53,7 +53,7 @@ export default function CustomDrawer({props,navigation}) {
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={() => navigation.navigate('Relatórios')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Histórico')}>
                             <View style={Styles.viewDrawer}>
                                 <Text style={Styles.textDrawer}>Histórico</Text>
                                 <Image

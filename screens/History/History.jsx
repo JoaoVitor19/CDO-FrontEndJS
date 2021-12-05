@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import api from '../../api/abastecimento'
+import api from '../../api/history'
 import { FAB } from 'react-native-paper';
 
 const styles = StyleSheet.create({
@@ -73,15 +73,15 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function Abastecimento() {
+export default function History() {
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState({})
 
     const getData = async () => {
 
-        const response = await api.get("/")
+        const response = await api.get("/1")
 
-        setData(response.data)
+        setData(response.data.content)
         return response.data
     }
 
@@ -102,10 +102,10 @@ export default function Abastecimento() {
                 style={styles.background}>
                 <View style={styles.background}>
                     <View style={styles.box}>
-                        {data.map((abastecimento) =>
-                            <View style={styles.aloneBox} key={abastecimento.id}>
+                        {data.map(({veiculos}) =>
+                            <View style={styles.aloneBox} key={veiculos.services.id}>
                                 <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
+                                    <Text style={styles.textStyle}>{veiculos.services.tpRecebeServico}</Text>
                                     <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
                                 </View>
                                 <View style={styles.flexPosto}>
