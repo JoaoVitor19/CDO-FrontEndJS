@@ -2,8 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient'
+import api from '../../api/config'
 
 export default function Relatorios() {
+
     return (
         <View style={styles.globalRelatorios}>
             <LinearGradient
