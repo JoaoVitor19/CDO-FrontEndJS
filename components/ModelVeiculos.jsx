@@ -5,8 +5,8 @@ import { Portal, Modal, Button } from 'react-native-paper';
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
-import axios from 'axios';
 import { TouchableOpacityBase } from 'react-native';
+
 
 
 const styles = StyleSheet.create({
