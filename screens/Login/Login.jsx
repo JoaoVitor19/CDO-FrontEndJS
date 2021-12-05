@@ -74,7 +74,6 @@ const Login = ({ token,navigation }) => {
          
         try {
             const { data, status } = await Instance.post('/auth', JSON.stringify(form))
-            alert("feito")
             navigation.navigate("Relatórios")
 
           } catch (err) {
