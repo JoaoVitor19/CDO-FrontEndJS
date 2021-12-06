@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { Text, View, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/abastecimento'
 import { FAB } from 'react-native-paper';
@@ -10,8 +10,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        marginTop: 5
+        justifyContent: 'space-between',
+        marginTop: 5,
+        marginLeft: '5%'
+
     },
 
     flexPosto: {
@@ -19,7 +21,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
+        marginLeft: '5%'
     },
 
     background: {
@@ -30,6 +33,7 @@ const styles = StyleSheet.create({
     },
 
     aloneBox: {
+        width: '100%',
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
         borderLeftWidth: 4,
@@ -37,7 +41,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: 20
+        marginBottom: 20,
+
+    },
+
+    contentBox: {
+        width: '90%',
     },
 
     box: {
@@ -79,7 +88,7 @@ export default function Abastecimento() {
 
     const getData = async () => {
 
-        const response = await api.get("/")
+        const response = await api.get("/veiculo/1") //fazer o numero vir pelo navigate
 
         setData(response.data)
         return response.data
@@ -90,37 +99,44 @@ export default function Abastecimento() {
     }, [])
 
     return (
-        <ScrollView>
-            <FAB
-                style={styles.fab}
-                icon="plus" 
-                onPress={() => console.log('Pressed')}
-                color="white"
-            />
+        <>
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background}>
-                <View style={styles.background}>
-                    <View style={styles.box}>
-                        {data.map((abastecimento) =>
-                            <View style={styles.aloneBox} key={abastecimento.id}>
-                                <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
-                                    <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
-                                </View>
-                                <View style={styles.flexPosto}>
-                                    <Text style={styles.posto}>Posto de Combustivel</Text>
-                                    <Text></Text>
-                                </View>
-                                <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
-                                    <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
-                                </View>
+                <SafeAreaView>
+                    <ScrollView>
+
+                        <View style={styles.background}>
+                            <View style={styles.box}>
+                                {data.map((abastecimento) =>
+                                    <View style={styles.aloneBox} key={abastecimento.id}>
+                                        <View style={styles.contentBox}>
+                                            <View style={styles.flex}>
+                                                <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
+                                                <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
+                                            </View>
+                                            <View style={styles.flexPosto}>
+                                                <Text style={styles.posto}>Posto de Combustivel</Text>
+                                                <Text></Text>
+                                            </View>
+                                            <View style={styles.flex}>
+                                                <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
+                                                <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
+                                            </View>
+                                        </View>
+                                    </View>
+                                )}
                             </View>
-                        )}
-                    </View>
-                </View>
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
             </LinearGradient>
-        </ScrollView>
+            <FAB
+                style={styles.fab}
+                icon="plus"
+                onPress={() => console.log('Pressed')}
+                color="white"
+            />
+        </>
     );
 }
