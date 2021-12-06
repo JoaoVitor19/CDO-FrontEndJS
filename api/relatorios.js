@@ -3,7 +3,7 @@ import config from "./config"
 
 const instance = axios.create({
 
-  baseURL: "http://192.168.100.5:8080/service",
+  baseURL: `${config.baseURL}/service`,
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${config.token}`
