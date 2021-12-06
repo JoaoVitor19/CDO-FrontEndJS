@@ -69,9 +69,6 @@ const Login = ({ token,navigation }) => {
             username: email,
             password: password
         }
-        
-
-         
         try {
             const { data, status } = await Instance.post('/auth', JSON.stringify(form))
             alert("feito")
