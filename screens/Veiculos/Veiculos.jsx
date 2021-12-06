@@ -31,22 +31,24 @@ const styles = StyleSheet.create({
 export default function Veiculos() {
 
     return (
-        <SafeAreaView>
-            <LinearGradient
-                colors={['#70F6C6', '#227878', '#227878']}
-                style={styles.background}>
-                <ScrollView contentContainerStyle={styles.container}>
-                    <Provider>
-                        <View style={styles.container} >
-                            <ModalVeiculos />
-                            <Text style={styles.textSub}>Arraste para excluir ou editar.</Text>
-                        </View>
-                        <View>
-                            <NewVeiculo />
-                        </View>
-                    </Provider>
-                </ScrollView>
-            </LinearGradient>
-        </SafeAreaView>
+        <ScrollView>
+            <SafeAreaView>
+                <LinearGradient
+                    colors={['#70F6C6', '#227878', '#227878']}
+                    style={styles.background}>
+                    <View contentContainerStyle={styles.container}>
+                        <Provider>
+                            <View style={styles.container} >
+                                <ModalVeiculos />
+                                <Text style={styles.textSub}>Arraste para excluir ou editar.</Text>
+                            </View>
+                            <View>
+                                <NewVeiculo />
+                            </View>
+                        </Provider>
+                    </View>
+                </LinearGradient>
+            </SafeAreaView>
+        </ScrollView>
     );
 }
