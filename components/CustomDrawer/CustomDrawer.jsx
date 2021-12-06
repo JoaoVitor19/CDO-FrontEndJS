@@ -4,7 +4,9 @@ import { DrawerContentScrollView } from '@react-navigation/drawer'
 
 
 export default function CustomDrawer({props,navigation}) {
-    return (
+
+ 
+    return (    
         <View style={{ flex: 1, backgroundColor: "#107F72" }}>
             <StatusBar hidden={true} />
             <DrawerContentScrollView {...props}>

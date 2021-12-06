@@ -74,7 +74,7 @@ const Login = ({ token,navigation }) => {
          
         try {
             const { data, status } = await Instance.post('/auth', JSON.stringify(form))
-            navigation.navigate("Relatórios")
+            navigation.navigate("Veiculos")
 
           } catch (err) {
             alert("Email ou senha incorretos!")
