@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textModal: {
-        fontFamily: 'Rubik',
         fontWeight: 'bold',
         fontSize: 20,
         margin: 10

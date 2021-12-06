@@ -8,6 +8,7 @@ import Login from '../screens/Login/Login';
 import Veiculos from '../screens/Veiculos/Veiculos'
 import Relatorios from '../screens/Relatorios/Relatorios'
 import History from '../screens/History/History'
+import Servico from '../screens/Servico/Servico';
 
 const Drawer = createDrawerNavigator();
 
@@ -38,6 +39,8 @@ const DrawerNavigator = () => (
             <Drawer.Screen name="Abastecimento" component={Abastecimento}
                 options={{}} ></Drawer.Screen>
             <Drawer.Screen name="Histórico" component={History}
+                options={{}} ></Drawer.Screen>
+            <Drawer.Screen name="Serviço" component={Servico}
                 options={{}} ></Drawer.Screen>
             <Drawer.Screen name="Relatórios" component={Relatorios}
                 options={{}} ></Drawer.Screen>
