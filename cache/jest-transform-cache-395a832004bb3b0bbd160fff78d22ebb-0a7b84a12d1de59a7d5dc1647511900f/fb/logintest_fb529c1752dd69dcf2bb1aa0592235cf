@@ -1,0 +1,22 @@
+a472c843d9c543ab3b1f8175c74c1ef9
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
+
+var _Login = _interopRequireDefault(require("../screens/Login/Login"));
+
+var _core = require("@react-navigation/core");
+
+var navigation = (0, _core.useNavigation)();
+describe('Login', function () {
+  test('should render', function () {
+    var tree = _reactTestRenderer.default.create(_react.default.createElement(_Login.default, {
+      navigation: navigation.navigate('Login')
+    })).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLnRlc3QuanMiXSwibmFtZXMiOlsibmF2aWdhdGlvbiIsImRlc2NyaWJlIiwidGVzdCIsInRyZWUiLCJyZW5kZXJlciIsImNyZWF0ZSIsIm5hdmlnYXRlIiwidG9KU09OIiwiZXhwZWN0IiwidG9NYXRjaFNuYXBzaG90Il0sIm1hcHBpbmdzIjoiOztBQUFBOztBQUNBOztBQUNBOztBQUNBOztBQUVBLElBQU1BLFVBQVUsR0FBRywwQkFBbkI7QUFFQUMsUUFBUSxDQUFDLE9BQUQsRUFBVSxZQUFNO0FBQ3BCQyxFQUFBQSxJQUFJLENBQUMsZUFBRCxFQUFrQixZQUFNO0FBQ3hCLFFBQU1DLElBQUksR0FBR0MsMkJBQVNDLE1BQVQsQ0FBZ0IsNkJBQUMsY0FBRDtBQUFPLE1BQUEsVUFBVSxFQUFFTCxVQUFVLENBQUNNLFFBQVgsQ0FBb0IsT0FBcEI7QUFBbkIsTUFBaEIsRUFBcUVDLE1BQXJFLEVBQWI7O0FBRUFDLElBQUFBLE1BQU0sQ0FBQ0wsSUFBRCxDQUFOLENBQWFNLGVBQWI7QUFDSCxHQUpHLENBQUo7QUFLSCxDQU5PLENBQVIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXHJcbmltcG9ydCByZW5kZXJlciBmcm9tICdyZWFjdC10ZXN0LXJlbmRlcmVyJ1xyXG5pbXBvcnQgTG9naW4gZnJvbSAnLi4vc2NyZWVucy9Mb2dpbi9Mb2dpbidcclxuaW1wb3J0IHsgdXNlTmF2aWdhdGlvbiB9IGZyb20gJ0ByZWFjdC1uYXZpZ2F0aW9uL2NvcmUnXHJcblxyXG5jb25zdCBuYXZpZ2F0aW9uID0gdXNlTmF2aWdhdGlvbigpXHJcblxyXG5kZXNjcmliZSgnTG9naW4nLCAoKSA9PiB7XHJcbiAgICB0ZXN0KCdzaG91bGQgcmVuZGVyJywgKCkgPT4ge1xyXG4gICAgICAgIGNvbnN0IHRyZWUgPSByZW5kZXJlci5jcmVhdGUoPExvZ2luIG5hdmlnYXRpb249e25hdmlnYXRpb24ubmF2aWdhdGUoJ0xvZ2luJyl9IC8+KS50b0pTT04oKVxyXG5cclxuICAgICAgICBleHBlY3QodHJlZSkudG9NYXRjaFNuYXBzaG90KClcclxuICAgIH0pXHJcbn0pIl19

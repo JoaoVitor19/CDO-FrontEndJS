@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { DrawerContentScrollView } from '@react-navigation/drawer'
-
+import { VeichleContext } from '../../App';
 
 export default function CustomDrawer({props,navigation}) {
-    return (
+
+    const veichle = useContext(VeichleContext)
+    console.log("Menu",veichle.veichle)
+    return (    
         <View style={{ flex: 1, backgroundColor: "#107F72" }}>
             <StatusBar hidden={true} />
             <DrawerContentScrollView {...props}>
@@ -13,8 +16,8 @@ export default function CustomDrawer({props,navigation}) {
                     <View style={{ marginLeft: 25, justifyContent: 'center' }}>
                         <Text style={Styles.drawerName} >Rogério Maria</Text>
                         <View style={Styles.drawerHead}>
-                            <Text style={{fontWeight:"bold"}} >Gol</Text>
-                            <Text style={{fontWeight:"bold"}} >BRA2E19</Text>
+                            <Text style={{fontWeight:"bold"}} >{veichle.veichle.modelo}</Text>
+                            <Text style={{fontWeight:"bold"}} >{veichle.veichle.placa}</Text>
                         </View>
                     </View>
                 </View>

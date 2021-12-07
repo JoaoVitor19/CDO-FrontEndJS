@@ -3,8 +3,7 @@ import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Image, Tex
 import Botao from '../../components/Botao/Button'
 import { LinearGradient } from 'expo-linear-gradient'
 import Instance from "./config"
-
-
+ 
 const styles = StyleSheet.create({
 
     container: {
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Login = ({ token,navigation }) => {
+const Login = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     
@@ -74,7 +73,7 @@ const Login = ({ token,navigation }) => {
          
         try {
             const { data, status } = await Instance.post('/auth', JSON.stringify(form))
-            navigation.navigate("Relatórios")
+            navigation.navigate("Veiculos")
 
           } catch (err) {
             alert("Email ou senha incorretos!")
