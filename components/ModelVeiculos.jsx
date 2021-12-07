@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
-    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity } from 'react-native';
+    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity
+} from 'react-native';
 import { Portal, Modal, Button } from 'react-native-paper';
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -119,12 +120,19 @@ const styles = StyleSheet.create({
 });
 
 export default function ModalVeiculos() {
+
+    const [state, setState] = useState()
     const [data, setData] = useState([])
     const [id, setId] = useState(null)
+    const [value, setValue] = useState("");
 
-    const [modalVisible, setModalVisible] = useState(false);
-    const [selectedProject, setSelectedProject] = useState(null);
-    const [modalVisibleB, setModalVisibleB] = useState(false);
+    const displayModal = id => {
+        setState(id)
+        console.log(state)
+    }
+    const closeModal = () => {
+        setState(null)
+    }
 
     const {veichle, setVeichle} = useContext(VeichleContext)
 
@@ -180,7 +188,9 @@ export default function ModalVeiculos() {
                                 <View>
                                     <RectButton
                                         style={styles.delButton}
-                                        onPress={() => handleRemove(veiculos.id)}
+                                        onPress={() => {
+                                            displayModal(veiculos.id);
+                                        }}
                                     >
                                         <Image style={styles.imageButton} source={require('../assets/bin.png')} />
                                     </RectButton>
@@ -200,6 +210,7 @@ export default function ModalVeiculos() {
                             </Animated.View>
                         )}
                     >
+
                         <TouchableOpacity onPress={() => onClick(veiculos)}>
                         <View style={[styles.modalBack]}>
                             <View style={styles.flex}>
@@ -212,9 +223,11 @@ export default function ModalVeiculos() {
                                     <View style={styles.flex}>
                                         <Text style={styles.textText}>{veiculos.ano}</Text>
                                         <Text style={styles.textText}>{veiculos.veiculoCondicao.condicao}</Text>
+
                                     </View>
+                                    <Image style={styles.image} source={require('../assets/car.png')} />
                                 </View>
-                                <Image style={styles.image} source={require('../assets/car.png')} />
+                                <Text style={styles.textUp}>Último serviço realizado em: {veiculos.services.data}</Text>
                             </View>
                         </View>
                         </TouchableOpacity>
@@ -223,17 +236,14 @@ export default function ModalVeiculos() {
                         <Modal
                             key={veiculos.id}
                             contentContainerStyle={styles.modalContent}
-                            visible={modalVisible}
-                            onDismiss={() => {
-                                setModalVisible(!modalVisible);
-                            }}>
+                            visible={state === veiculos.id}
+                            onDismiss={closeModal}>
                             <View>
                                 <Text style={styles.textModal}>Tem certeza que deseja excluir ?</Text>
                             </View>
                             <View style={styles.flex}>
-                                <Button style={{ margin: 20, borderWidth: 2, borderColor: 'gray' }} color='gray' mode="outlined" onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                }}>
+                                <Button style={{ margin: 20, borderWidth: 2, borderColor: 'gray' }} color='gray' mode="outlined" onPress={closeModal}
+                                >
                                     Cancelar
                                 </Button>
                                 <Button style={{ margin: 20 }} color='red' mode="contained" onPress={() => handleRemove(veiculos.id)}>
@@ -245,9 +255,8 @@ export default function ModalVeiculos() {
                     <Portal>
                         <Modal
                             contentContainerStyle={styles.modalEdit}
-                            visible={modalVisibleB}
                             onDismiss={() => {
-                                setModalVisibleB(!modalVisibleB);
+
                             }}>
                             <View style={styles.flexInput}>
                                 <View style={styles.flexInput}>
@@ -298,15 +307,11 @@ export default function ModalVeiculos() {
                                     </View>
                                 </View>
                                 <View style={styles.flex}>
-                                    <Button style={{ margin: 20, borderWidth: 2, borderColor: 'gray' }} color='gray' mode="outlined" onPress={() => {
-                                        setModalVisibleB(!modalVisibleB)
-
-                                    }}
+                                    <Button style={{ margin: 20, borderWidth: 2, borderColor: 'gray' }} color='gray' mode="outlined"
                                     >
                                         Cancelar
                                     </Button>
-                                    <Button style={{ margin: 20 }} color='#2AD14F' mode="contained" onPress={() => {
-                                    }}>
+                                    <Button style={{ margin: 20 }} color='#2AD14F' mode="contained" >
                                         Salvar
                                     </Button>
                                 </View>

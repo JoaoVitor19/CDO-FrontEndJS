@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { Text, View, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/history'
 import { FAB } from 'react-native-paper';
@@ -10,16 +10,19 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        marginTop: 5
+        justifyContent: 'space-between',
+        marginTop: 5,
+        marginLeft: '5%'
+
     },
 
-    flexPosto: {
+    flexEndereco: {
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
+        marginLeft: '5%'
     },
 
     background: {
@@ -30,6 +33,7 @@ const styles = StyleSheet.create({
     },
 
     aloneBox: {
+        width: '100%',
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
         borderLeftWidth: 4,
@@ -37,7 +41,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: 20
+        marginBottom: 20,
+
+    },
+
+    contentBox: {
+        width: '90%',
     },
 
     box: {
@@ -48,7 +57,7 @@ const styles = StyleSheet.create({
         marginRight: 30,
     },
 
-    posto: {
+    endereco: {
         color: 'red',
         fontSize: 12,
         paddingBottom: 60
@@ -75,13 +84,13 @@ const styles = StyleSheet.create({
 
 export default function History() {
 
-    const [data, setData] = useState({})
+    const [data, setData] = useState([])
 
     const getData = async () => {
 
-        const response = await api.get("/1")
+        const response = await api.get("/veiculo/1") //fazer o numero vir pelo navigate
 
-        setData(response.data.content)
+        setData(response.data)
         return response.data
     }
 
@@ -90,37 +99,44 @@ export default function History() {
     }, [])
 
     return (
-        <ScrollView>
-            <FAB
-                style={styles.fab}
-                icon="plus" 
-                onPress={() => console.log('Pressed')}
-                color="white"
-            />
+        <>
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background}>
-                <View style={styles.background}>
-                    <View style={styles.box}>
-                        {data.map(({veiculos}) =>
-                            <View style={styles.aloneBox} key={veiculos.services.id}>
-                                <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>{veiculos.services.tpRecebeServico}</Text>
-                                    <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
-                                </View>
-                                <View style={styles.flexPosto}>
-                                    <Text style={styles.posto}>Posto de Combustivel</Text>
-                                    <Text></Text>
-                                </View>
-                                <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
-                                    <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
-                                </View>
+                <SafeAreaView>
+                    <ScrollView>
+
+                        <View style={styles.background}>
+                            <View style={styles.box}>
+                                {data.map((service) =>
+                                    <View style={styles.aloneBox} key={service.id}>
+                                        <View style={styles.contentBox}>
+                                            <View style={styles.flex}>
+                                                <Text style={styles.textStyle}>{service.tpRecebeServico.nome}</Text>
+                                                <Text style={styles.textStyle}></Text>
+                                            </View>
+                                            <View style={styles.flexEndereco}>
+                                                <Text style={styles.endereco}>{service.loja.endereco}</Text>
+                                                <Text></Text>
+                                            </View>
+                                            <View style={styles.flex}>
+                                                <Text style={styles.textStyle}>R${service.valorPago}</Text>
+                                                <Text style={styles.textStyle}>{service.data}</Text>
+                                            </View>
+                                        </View>
+                                    </View>
+                                )}
                             </View>
-                        )}
-                    </View>
-                </View>
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
             </LinearGradient>
-        </ScrollView>
+            {/* <FAB
+                style={styles.fab}
+                icon="plus"
+                onPress={() => console.log('Pressed')}
+                color="white"
+            /> */}
+        </>
     );
 }

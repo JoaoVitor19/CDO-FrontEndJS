@@ -2,7 +2,8 @@ import axios from "axios"
 import config from "./config"
 
 const instance = axios.create({
-    baseURL: `http://192.168.100.6:8080/veiculo`,
+
+    baseURL: `${config.baseURL}/veiculo`,
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${config.token}` }
 })
 
