@@ -12,40 +12,46 @@ import Servico from '../screens/Servico/Servico';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = () => (
-    <NavigationContainer>
-        <Drawer.Navigator
-            initialRouteName="Login"
-            drawerContent={props => <CustomDrawer props={undefined} {...props} />}
-            screenOptions={{
-                headerStyle: {
-                    backgroundColor: "#107F72",
-                    height: 65,
-                },
-                headerTitleStyle: {
-                    color: "white",
-                    fontWeight: "bold",
-                    fontSize: 28
-                },
-                headerTitleAlign: "center"
-            }}>
-            <Drawer.Screen name="Login" component={Login}
-                options={{
-                   headerShown: false,
-                   //  swipeEnabled: false
-                }}></Drawer.Screen>
-            <Drawer.Screen name="Veiculos" component={Veiculos}
-                options={{}}></Drawer.Screen>
-            <Drawer.Screen name="Abastecimento" component={Abastecimento}
-                options={{}} ></Drawer.Screen>
-            <Drawer.Screen name="Histórico" component={History}
-                options={{}} ></Drawer.Screen>
-            <Drawer.Screen name="Serviço" component={Servico}
-                options={{}} ></Drawer.Screen>
-            <Drawer.Screen name="Relatórios" component={Relatorios}
-                options={{}} ></Drawer.Screen>
-        </Drawer.Navigator>
-    </NavigationContainer>
-)
+const DrawerNavigator = () => {
+    return (
+        <NavigationContainer>
+            <Drawer.Navigator
+                initialRouteName="Login"
+                drawerContent={props => <CustomDrawer props={undefined} {...props} />}
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: "#107F72",
+                        height: 65,
+                    },
+                    headerTitleStyle: {
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: 28
+                    },
+                    headerTitleAlign: "center"
+                }}>
+                <Drawer.Screen
+                    name="Login"
+                    component={Login}
+                    options={{ headerShown: false }}
+                />
+
+                <Drawer.Screen
+                    name="Veiculos"
+                    component={Veiculos}
+                />
+
+                <Drawer.Screen name="Abastecimento" component={Abastecimento}
+                    options={{}} ></Drawer.Screen>
+                <Drawer.Screen name="Histórico" component={History}
+                    options={{}} ></Drawer.Screen>
+                <Drawer.Screen name="Serviço" component={Servico}
+                    options={{}} ></Drawer.Screen>
+                <Drawer.Screen name="Relatórios" component={Relatorios}
+                    options={{}} ></Drawer.Screen>
+            </Drawer.Navigator>
+        </NavigationContainer>
+    )
+}
 
 export default DrawerNavigator;

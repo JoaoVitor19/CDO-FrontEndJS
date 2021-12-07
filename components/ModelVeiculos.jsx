@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
     StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity } from 'react-native';
 import { Portal, Modal, Button } from 'react-native-paper';
@@ -6,8 +6,7 @@ import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
 import { TouchableOpacityBase } from 'react-native';
-
-
+import { VeichleContext } from '../App';
 
 const styles = StyleSheet.create({
     image: {
@@ -120,57 +119,6 @@ const styles = StyleSheet.create({
 });
 
 export default function ModalVeiculos() {
-
-    const initialTutorialState = {
-        id: null,
-        placa: "",
-        ano: "",
-        model: {
-            id: null,
-            modelo: "",
-            brand: {
-                id: null,
-                marca: "",
-            }
-        },
-        services: {
-            id: null,
-            valorPago: null,
-            data: "",
-            tpRecebeServico: {
-                id: null,
-                nome: ""
-            },
-            loja: {
-                id: null,
-                nome: "",
-                endereco: ""
-            }
-        },
-        user: {
-            id: null,
-            cpf: "",
-            username: "",
-            email: "",
-            phone: "",
-            password: "",
-            enable: true,
-        },
-        abasteci: {
-            id: null,
-            vlPago: null,
-            dataTime: "",
-            combustivel: {
-                id: null,
-                tCombustivel: ""
-            }
-        },
-        veiculoCondicao: {
-            id: null,
-            condicao: ""
-        }
-    };
-
     const [data, setData] = useState([])
     const [id, setId] = useState(null)
 
@@ -178,11 +126,13 @@ export default function ModalVeiculos() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [modalVisibleB, setModalVisibleB] = useState(false);
 
+    const {veichle, setVeichle} = useContext(VeichleContext)
+
     const getData = async () => {
 
         const response = await api.get("/user")
         setData(response.data)
-        console.log(response.data)
+        // console.log(response.data)
     }
 
     const handleRemove = async (id) => {
@@ -192,15 +142,33 @@ export default function ModalVeiculos() {
         getData()
     }
 
+    const onClick = (veiculo) => {
+        navigation.navigate('Relatórios')
+
+        setVeichle({
+            ...veichle,
+            id: veiculo.id,
+            placa: veiculo.placa,
+            ano: veiculo.ano,
+            modelo: veiculo.model.modelo,
+            user: veiculo.user,
+            veichleCondition: veiculo.veiculoCondicao            
+
+        })
+
+        // console.log('onClick', veiculo)
+    }
+
     const navigation = useNavigation();
 
     useEffect(() => {
+        // setVeichle(({...veichle, placa: veiculos.placa}));
         getData()
     }, [])
 
-    /* useEffect(() => {
-        console.log(data)
-    },[data])  */
+    useEffect(() => {
+        console.log(veichle)
+    },[veichle])
 
     return (
         <View>
@@ -232,7 +200,7 @@ export default function ModalVeiculos() {
                             </Animated.View>
                         )}
                     >
-                        <TouchableOpacity onPress={() => navigation.navigate('Relatórios', veiculos.id)}>
+                        <TouchableOpacity onPress={() => onClick(veiculos)}>
                         <View style={[styles.modalBack]}>
                             <View style={styles.flex}>
                                 <View style={styles.textMargin}>
@@ -248,7 +216,6 @@ export default function ModalVeiculos() {
                                 </View>
                                 <Image style={styles.image} source={require('../assets/car.png')} />
                             </View>
-                            <Text style={styles.textUp}>Último serviço realizado em: {veiculos.services.data}</Text>
                         </View>
                         </TouchableOpacity>
                     </Swipeable>
@@ -318,7 +285,6 @@ export default function ModalVeiculos() {
                                             <Text style={styles.textInput}>Data</Text>
                                             <TextInput
                                                 style={styles.input}
-                                                placeholder={veiculos.services.data}
                                             />
                                         </View>
                                     </View>
