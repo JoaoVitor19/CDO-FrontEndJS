@@ -227,7 +227,6 @@ export default function ModalVeiculos() {
                                     </View>
                                     <Image style={styles.image} source={require('../assets/car.png')} />
                                 </View>
-                                <Text style={styles.textUp}>Último serviço realizado em: {veiculos.services.data}</Text>
                             </View>
                         </View>
                         </TouchableOpacity>
