@@ -6,7 +6,7 @@ import { VeichleContext } from '../../App';
 export default function CustomDrawer({props,navigation}) {
 
     const veichle = useContext(VeichleContext)
-    console.log("Menu",veichle.veichle)
+    
     return (    
         <View style={{ flex: 1, backgroundColor: "#107F72" }}>
             <StatusBar hidden={true} />

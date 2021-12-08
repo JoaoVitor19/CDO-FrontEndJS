@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/abastecimento'
-
+import { VeichleContext } from '../../App';
 import ModalAbastecimento from './modal/ModalAbast';
 
 const styles = StyleSheet.create({
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginTop: 5
     },
-   
+
 
     flexPosto: {
         width: '100%',
@@ -60,16 +60,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold'
     }
-  
+
 })
 
 export default function Abastecimento() {
 
     const [data, setData] = useState([])
-
+    const veichle = useContext(VeichleContext)
     const getData = async () => {
 
-        const response = await api.get("/")
+        const response = await api.get(`/veiculo/${veichle.veichle.id}`)
 
         setData(response.data)
         return response.data
@@ -81,7 +81,7 @@ export default function Abastecimento() {
 
     return (
         <ScrollView>
-            
+
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background}>
@@ -102,18 +102,18 @@ export default function Abastecimento() {
                                     <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
                                 </View>
                             </View>
-                            
+
                         )}
                     </View>
-                   
-                    <ModalAbastecimento/>
-                    
+
+                    {/* <ModalAbastecimento /> */}
+
                 </View>
-                
+
             </LinearGradient>
-           
-           
-            
+
+
+
         </ScrollView>
     );
 }
