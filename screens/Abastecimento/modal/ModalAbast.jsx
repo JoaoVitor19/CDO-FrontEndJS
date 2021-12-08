@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
   background: {
     boxShadow: '3px 3px 3px #B2B4BD',
     backgroundColor: '#fff',
-    width: '80%',
-    height: '80%',
+    width: 300,
+    height: 550,
     padding: 10,
     borderRadius: 5,
     margin: 35,
@@ -44,7 +44,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   inputDH: {
-    width: '40%',
+    width: 140,
+    justifyContent: 'space-between'
+  },
+  inputH:{
+    left:25,
+    width: 140,
     justifyContent: 'space-between'
   },
   backgroundFundo: {
@@ -57,10 +62,11 @@ const styles = StyleSheet.create({
     padding: 10
   },
   inputHora: {
-    width: '70%',
+    width: '50%',
     fontSize: 20,
     backgroundColor: '#F3F1F1',
-    borderRadius: 3
+    borderRadius: 3,
+    
   },
   inputData: {
     width: '70%',
@@ -115,7 +121,7 @@ export default function ModalAbastecimento() {
                       value={values.data}
                     />
                   </View>
-                  <View style={styles.inputDH}>
+                  <View style={styles.inputH}>
                     <Text style={styles.fundoHora}>Hora</Text>
                     <TextInput
                       onChangeText={handleChange('hora')}
@@ -201,14 +207,11 @@ export default function ModalAbastecimento() {
 
                 <View style={styles.button}>
                   <Button
-                    
                     style={styles.buttonSalvar}
                     title="Salvar"
                     onPress={handleSubmit}
                   ></Button>
                   <Button
-                    
-                    
                     title="Fechar"
                     onPress={() => {
                       setVisivel(false)
