@@ -5,7 +5,7 @@ import { Formik } from 'formik'
 
 const styles = StyleSheet.create({
   background: {
-    boxShadow:'3px 3px 3px #B2B4BD',
+    boxShadow: '3px 3px 3px #B2B4BD',
     backgroundColor: '#fff',
     width: '80%',
     height: '80%',
@@ -15,9 +15,13 @@ const styles = StyleSheet.create({
     borderColor: '#de4126',
     borderLeftWidth: 5
   },
-  fundo: {
+  fundoData: {
     fontSize: 18,
-    width: '25%'
+    width: '70%'
+  },
+  fundoHora: {
+    fontSize: 18,
+    width: '70%'
   },
   button: {
     backgroundColor: '#fff',
@@ -31,17 +35,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center'
   },
-  inputData: {
-    fontSize: 20,
-    backgroundColor: '#F3F1F1',
-    borderRadius: 3
-  },
+  
   inputDataHora: {
     flexDirection: 'row'
+    
   },
   inputDH: {
-    width: '80%',
-    justifyContent: 'space-between'
+    width: '40%',
+    justifyContent: 'space-between',
+    
+    
   },
   backgroundFundo: {
     padding: 20
@@ -53,7 +56,13 @@ const styles = StyleSheet.create({
     padding: 10
   },
   inputHora: {
-    width: '30%',
+    width: '70%',
+    fontSize: 20,
+    backgroundColor: '#F3F1F1',
+    borderRadius: 3
+  },
+  inputData: {
+    width: '70%',
     fontSize: 20,
     backgroundColor: '#F3F1F1',
     borderRadius: 3
@@ -84,8 +93,8 @@ export default function ModalAbastecimento() {
             hora: '',
             tipoDeCombusitvel: '',
             nomeDoPosto: '',
-            tipoDeDeslocamento:'',
-            anotação:''
+            tipoDeDeslocamento: '',
+            anotação: ''
           }}
           onSubmit={values => console.log(values)}
         >
@@ -97,16 +106,17 @@ export default function ModalAbastecimento() {
               <View style={styles.backgroundFundo}>
                 <View style={styles.inputDataHora}>
                   <View style={styles.inputDH}>
-                    <Text style={styles.fundo}>Data</Text>
+                    <Text style={styles.fundoData}>Data</Text>
                     <TextInput
                       style={styles.inputData}
                       onChangeText={handleChange('data')}
                       onBlur={handleBlur('data')}
                       value={values.data}
+                      
                     />
                   </View>
                   <View style={styles.inputDH}>
-                    <Text style={styles.fundo}>Hora</Text>
+                    <Text style={styles.fundoHora}>Hora</Text>
                     <TextInput
                       onChangeText={handleChange('hora')}
                       onBlur={handleBlur('hora')}
@@ -176,9 +186,9 @@ export default function ModalAbastecimento() {
 
                 <Text style={{ fontSize: 20 }}>Anotação</Text>
                 <TextInput
-                onChangeText={handleChange('anotação')}
-                onBlur={handleBlur('anotação')}
-                value={values.anotação}
+                  onChangeText={handleChange('anotação')}
+                  onBlur={handleBlur('anotação')}
+                  value={values.anotação}
                   multiline
                   numberOfLines={4}
                   style={{

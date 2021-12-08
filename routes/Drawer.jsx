@@ -24,6 +24,7 @@ const DrawerNavigator = () => (
                     color: "white",
                     fontWeight: "bold",
                     fontSize: 28
+                    
                 },
                 headerTitleAlign: "center"
             }}>
