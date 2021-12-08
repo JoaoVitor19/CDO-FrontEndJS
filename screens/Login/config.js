@@ -1,8 +1,11 @@
-const axios = require('axios')
+import axios from "axios"
+import config from "./config"
+
 
 const Instance = axios.create({
 
-    baseURL: 'http://192.168.100.6:8080/',
+
+    baseURL: `${config.baseURL}/`,
     headers: {
         "Content-Type": 'application/json',
     }
