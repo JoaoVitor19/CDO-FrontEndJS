@@ -29,22 +29,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     padding: 10
   },
+  buttonSalvar: {
+    backgroundColor: '#b8b8b8',
+    color: 'black'
+  },
   textTitulo: {
     fontSize: 17,
     fontWeight: 'bold',
     display: 'flex',
     justifyContent: 'center'
   },
-  
+
   inputDataHora: {
     flexDirection: 'row'
-    
   },
   inputDH: {
     width: '40%',
-    justifyContent: 'space-between',
-    
-    
+    justifyContent: 'space-between'
   },
   backgroundFundo: {
     padding: 20
@@ -112,7 +113,6 @@ export default function ModalAbastecimento() {
                       onChangeText={handleChange('data')}
                       onBlur={handleBlur('data')}
                       value={values.data}
-                      
                     />
                   </View>
                   <View style={styles.inputDH}>
@@ -200,8 +200,15 @@ export default function ModalAbastecimento() {
                 />
 
                 <View style={styles.button}>
-                  <Button title="Salvar" onPress={handleSubmit}></Button>
                   <Button
+                    
+                    style={styles.buttonSalvar}
+                    title="Salvar"
+                    onPress={handleSubmit}
+                  ></Button>
+                  <Button
+                    
+                    
                     title="Fechar"
                     onPress={() => {
                       setVisivel(false)
