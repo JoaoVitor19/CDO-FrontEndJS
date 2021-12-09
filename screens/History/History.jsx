@@ -105,7 +105,6 @@ export default function History() {
                 style={styles.background}>
                 <SafeAreaView>
                     <ScrollView>
-
                         <View style={styles.background}>
                             <View style={styles.box}>
                                 {data.map((service) =>

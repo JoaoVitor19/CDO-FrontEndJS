@@ -9,6 +9,7 @@ import Veiculos from '../screens/Veiculos/Veiculos'
 import Relatorios from '../screens/Relatorios/Relatorios'
 import History from '../screens/History/History'
 import Servico from '../screens/Servico/Servico';
+import { Swipeable } from 'react-native-gesture-handler';
 
 const Drawer = createDrawerNavigator();
 
@@ -33,22 +34,29 @@ const DrawerNavigator = () => {
                 <Drawer.Screen
                     name="Login"
                     component={Login}
-                    options={{ headerShown: false }}
-                />
-
+                    options={{
+                        headerShown: false,
+                        swipeEnabled: false
+                    }} />
                 <Drawer.Screen
                     name="Veiculos"
                     component={Veiculos}
-                />
-
-                <Drawer.Screen name="Abastecimento" component={Abastecimento}
-                    options={{}} ></Drawer.Screen>
-                <Drawer.Screen name="Histórico" component={History}
-                    options={{}} ></Drawer.Screen>
-                <Drawer.Screen name="Serviço" component={Servico}
-                    options={{}} ></Drawer.Screen>
-                <Drawer.Screen name="Relatórios" component={Relatorios}
-                    options={{}} ></Drawer.Screen>
+                    options={{
+                        headerShown: false,
+                        swipeEnabled: false
+                    }} />
+                <Drawer.Screen
+                    name="Abastecimento"
+                    component={Abastecimento} />
+                <Drawer.Screen
+                    name="Histórico"
+                    component={History} />
+                <Drawer.Screen
+                    name="Serviço"
+                    component={Servico} />
+                <Drawer.Screen
+                    name="Relatórios"
+                    component={Relatorios} />
             </Drawer.Navigator>
         </NavigationContainer>
     )

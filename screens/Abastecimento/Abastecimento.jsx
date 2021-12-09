@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/abastecimento'
 import { VeichleContext } from '../../App';
@@ -80,40 +80,36 @@ export default function Abastecimento() {
     }, [])
 
     return (
-        <ScrollView>
+            <ScrollView>
+                <LinearGradient
+                    colors={['#70F6C6', '#227878', '#227878']}
+                    style={styles.background}
+                    >
+                    <View>
+                        <View style={styles.box}>
+                            {data.map((abastecimento) =>
+                                <View style={styles.aloneBox} key={abastecimento.id}>
+                                    <View style={styles.flex}>
+                                        <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
+                                        <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
+                                    </View>
+                                    <View style={styles.flexPosto}>
+                                        <Text style={styles.posto}>Posto de Combustivel</Text>
+                                        <Text></Text>
+                                    </View>
+                                    <View style={styles.flex}>
+                                        <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
+                                        <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
+                                    </View>
+                                </View>
 
-            <LinearGradient
-                colors={['#70F6C6', '#227878', '#227878']}
-                style={styles.background}>
-                <View style={styles.background}>
-                    <View style={styles.box}>
-                        {data.map((abastecimento) =>
-                            <View style={styles.aloneBox} key={abastecimento.id}>
-                                <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
-                                    <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
-                                </View>
-                                <View style={styles.flexPosto}>
-                                    <Text style={styles.posto}>Posto de Combustivel</Text>
-                                    <Text></Text>
-                                </View>
-                                <View style={styles.flex}>
-                                    <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
-                                    <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
-                                </View>
-                            </View>
+                            )}
+                        </View>
 
-                        )}
+                        {/* <ModalAbastecimento /> */}
+
                     </View>
-
-                    {/* <ModalAbastecimento /> */}
-
-                </View>
-
-            </LinearGradient>
-
-
-
-        </ScrollView>
+                </LinearGradient>
+            </ScrollView>
     );
 }
