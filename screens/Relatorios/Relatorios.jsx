@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View, Image, } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient'
 import { VeichleContext } from '../../App';
+import Menu from '../../components/Menu/Menu'
 import api from '../../api/config'
 
 export default function Relatorios() {
@@ -11,7 +12,7 @@ export default function Relatorios() {
     const veichle = useContext(VeichleContext)
     const getData = async () => {
 
-        const response = await api.get('/veiculo/1') //${veichle.veichle.id}
+        const response = await api.get(`/veiculo/${veichle.veichle.id}`)
 
         setData(response.data)
         return response.data
@@ -28,6 +29,7 @@ export default function Relatorios() {
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background} />
             <StatusBar hidden />
+            <Menu title="Relatórios"/>
             <View style={styles.boxRelatorios}>
                 <><View style={styles.containerRelatorios}>
                     <View style={{ justifyContent: 'space-between' }} >
@@ -36,7 +38,7 @@ export default function Relatorios() {
                             <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
                         </View>
                         <View style={styles.viewBox}>
-                            <Text style={styles.dataContainerRelatorios}>{ }</Text>
+                            <Text style={styles.dataContainerRelatorios}>{}</Text>
                             <Text style={styles.textContainerRelatorios}>Ultimo Abastecimento</Text>
                         </View>
                     </View>
@@ -51,13 +53,12 @@ export default function Relatorios() {
                                 <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
                             </View>
                             <View style={styles.viewBox}>
-                                <Text style={styles.dataContainerRelatorios}>{ }</Text>
+                                <Text style={styles.dataContainerRelatorios}>{veichle.veichle.date}</Text>
                                 <Text style={styles.textContainerRelatorios}>Ultima Manutenção</Text>
                             </View>
                         </View>
                         <Image style={styles.relatorioContainerImages} source={require('../../assets/reparar.png')} />
-                    </View>
-                    <View style={styles.footerRelatorios}>
+                    </View><View style={styles.footerRelatorios}>
                         <Image style={styles.imgFimRelatorios} source={require('../../assets/moneyimg.png')} />
                         <View style={{ alignItems: 'center' }}>
                             <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 22 }}>Gasto Total</Text>
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '10%'
     },
     globalRelatorios: {
         width: '100%',
@@ -127,8 +127,10 @@ const styles = StyleSheet.create({
         marginTop: '10%'
     },
     boxRelatorios: {
-        marginTop: '10%',
+        marginTop: 20,
         alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-around'
     },
     containerRelatorios: {
         backgroundColor: 'white',

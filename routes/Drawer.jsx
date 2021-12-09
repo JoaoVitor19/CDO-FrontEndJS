@@ -20,29 +20,18 @@ const DrawerNavigator = () => {
                 initialRouteName="Login"
                 drawerContent={props => <CustomDrawer props={undefined} {...props} />}
                 screenOptions={{
-                    headerStyle: {
-                        backgroundColor: "#107F72",
-                        height: 65,
-                    },
-                    headerTitleStyle: {
-                        color: "white",
-                        fontWeight: "bold",
-                        fontSize: 28
-                    },
-                    headerTitleAlign: "center"
+                    headerShown: false,
                 }}>
                 <Drawer.Screen
                     name="Login"
                     component={Login}
                     options={{
-                        headerShown: false,
                         swipeEnabled: false
                     }} />
                 <Drawer.Screen
                     name="Veiculos"
                     component={Veiculos}
                     options={{
-                        headerShown: false,
                         swipeEnabled: false
                     }} />
                 <Drawer.Screen
@@ -56,7 +45,11 @@ const DrawerNavigator = () => {
                     component={Servico} />
                 <Drawer.Screen
                     name="Relatórios"
-                    component={Relatorios} />
+                    component={Relatorios}
+                    options={{
+                        headerShown: false,
+                        swipeEnabled: false
+                    }} />
             </Drawer.Navigator>
         </NavigationContainer>
     )

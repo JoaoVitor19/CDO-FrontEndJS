@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/history'
+import Menu from '../../components/Menu/Menu'
 import { FAB } from 'react-native-paper';
 
 const styles = StyleSheet.create({
@@ -103,6 +104,7 @@ export default function History() {
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background}>
+                <Menu title='Histórico' />
                 <SafeAreaView>
                     <ScrollView>
                         <View style={styles.background}>

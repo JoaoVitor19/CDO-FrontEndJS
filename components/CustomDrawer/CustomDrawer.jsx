@@ -58,7 +58,7 @@ export default function CustomDrawer({props,navigation}) {
                     <View>
                         <TouchableOpacity onPress={() => navigation.navigate('Relatórios')}>
                             <View style={Styles.viewDrawer}>
-                                <Text style={Styles.textDrawer}>Relatório</Text>
+                                <Text style={Styles.textDrawer}>Relatórios</Text>
                                 <Image
                                     source={require('../../assets/images/relatoriosIcon.png')}
                                     style={Styles.iconAbs}
