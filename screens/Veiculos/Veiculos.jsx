@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     background: {
         width: '100%',
@@ -31,24 +31,16 @@ const styles = StyleSheet.create({
 export default function Veiculos() {
 
     return (
-        <ScrollView>
-            <SafeAreaView>
-                <LinearGradient
-                    colors={['#70F6C6', '#227878', '#227878']}
-                    style={styles.background}>
-                    <View contentContainerStyle={styles.container}>
-                        <Provider>
-                            <View style={styles.container} >
-                                <ModalVeiculos />
-                                <Text style={styles.textSub}>Arraste para excluir ou editar.</Text>
-                            </View>
-                            <View>
-                                <NewVeiculo />
-                            </View>
-                        </Provider>
-                    </View>
-                </LinearGradient>
-            </SafeAreaView>
-        </ScrollView>
+        <View >
+                    <LinearGradient
+                        colors={['#70F6C6', '#227878', '#227878']}
+                        style={styles.background}>
+                            <Provider>
+                                <View style={styles.container} >
+                                    <ModalVeiculos />
+                                </View>
+                            </Provider>
+                    </LinearGradient>
+        </View>
     );
 }
