@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient'
+import { VeichleContext } from '../../App';
+import Menu from '../../components/Menu/Menu'
 import api from '../../api/config'
 
 export default function Relatorios() {
+
+    const [data, setData] = useState()
+    const veichle = useContext(VeichleContext)
+    const getData = async () => {
+
+        const response = await api.get(`/veiculo/${veichle.veichle.id}`)
+
+        setData(response.data)
+        return response.data
+    }
+
+    useEffect(() => {
+        getData()
+
+    }, [])
 
     return (
         <View style={styles.globalRelatorios}>
@@ -12,15 +29,16 @@ export default function Relatorios() {
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background} />
             <StatusBar hidden />
+            <Menu title="Relatórios"/>
             <View style={styles.boxRelatorios}>
-                <View style={styles.containerRelatorios}>
-                    <View style={{ justifyContent: 'space-between' }}>
+                <><View style={styles.containerRelatorios}>
+                    <View style={{ justifyContent: 'space-between' }} >
                         <View style={styles.viewBox}>
                             <Text style={styles.valoresContainerRelatorios}>R$ 1000,00</Text>
                             <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
                         </View>
                         <View style={styles.viewBox}>
-                            <Text style={styles.dataContainerRelatorios}> 10/10/2021</Text>
+                            <Text style={styles.dataContainerRelatorios}>{}</Text>
                             <Text style={styles.textContainerRelatorios}>Ultimo Abastecimento</Text>
                         </View>
                     </View>
@@ -28,34 +46,33 @@ export default function Relatorios() {
                     </View>
                     <Image style={styles.relatorioContainerImages} source={require('../../assets/combustivel.png')} />
                 </View>
-                <View style={styles.containerRelatorios}>
-                    <View style={{ justifyContent: 'space-between' }}>
-                        <View style={styles.viewBox}>
-                            <Text style={styles.valoresContainerRelatorios}>R$ 2000,00</Text>
-                            <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
+                    <View style={styles.containerRelatorios}>
+                        <View style={{ justifyContent: 'space-between' }}>
+                            <View style={styles.viewBox}>
+                                <Text style={styles.valoresContainerRelatorios}>R$ 2000,00</Text>
+                                <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
+                            </View>
+                            <View style={styles.viewBox}>
+                                <Text style={styles.dataContainerRelatorios}>{veichle.veichle.date}</Text>
+                                <Text style={styles.textContainerRelatorios}>Ultima Manutenção</Text>
+                            </View>
                         </View>
-                        <View style={styles.viewBox}>
-                            <Text style={styles.dataContainerRelatorios}> 10/10/2021</Text>
-                            <Text style={styles.textContainerRelatorios}>Próxima Manutenção</Text>
+                        <Image style={styles.relatorioContainerImages} source={require('../../assets/reparar.png')} />
+                    </View><View style={styles.footerRelatorios}>
+                        <Image style={styles.imgFimRelatorios} source={require('../../assets/moneyimg.png')} />
+                        <View style={{ alignItems: 'center' }}>
+                            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 22 }}>Gasto Total</Text>
+                            <Text style={{ color: 'white', fontSize: 20 }}>R$ 3.000,00</Text>
                         </View>
-                    </View>
-                    <Image style={styles.relatorioContainerImages} source={require('../../assets/reparar.png')} />
-                </View>
-                <View style={styles.footerRelatorios}>
-                    <Image style={styles.imgFimRelatorios} source={require('../../assets/moneyimg.png')} />
-                    <View style={{alignItems: 'center'}}>
-                        <Text style={{ color: 'black',fontWeight:'bold', fontSize: 22 }}>Gasto Total</Text>
-                        <Text style={{ color: 'white', fontSize: 20 }}>R$ 3.000,00 </Text>
-                    </View>
-                    <Image style={styles.imgFimRelatorios} source={require('../../assets/graficoimg.png')} />
-                </View>
+                        <Image style={styles.imgFimRelatorios} source={require('../../assets/graficoimg.png')} />
+                    </View></>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    footerRelatorios:{
+    footerRelatorios: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -112,6 +129,8 @@ const styles = StyleSheet.create({
     boxRelatorios: {
         marginTop: 20,
         alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-around'
     },
     containerRelatorios: {
         backgroundColor: 'white',

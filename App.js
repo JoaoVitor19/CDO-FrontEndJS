@@ -9,7 +9,7 @@ const context = {
     ano: '',
     modelo: '',
     user: '',
-    veichleCondition: ''
+    veichleCondition: '',
   },
   setState: () => {}
 }

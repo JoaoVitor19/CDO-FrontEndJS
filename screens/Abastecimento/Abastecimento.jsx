@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/abastecimento'
+import Menu from '../../components/Menu/Menu'
 import { VeichleContext } from '../../App';
 import ModalAbastecimento from './modal/ModalAbast';
 
@@ -81,7 +82,7 @@ export default function Abastecimento() {
 
     return (
         <ScrollView>
-
+            <Menu title="Abastecimento" style={{marginRight: 30}}/>
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background}>
