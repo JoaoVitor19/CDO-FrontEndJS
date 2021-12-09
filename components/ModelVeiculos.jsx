@@ -159,7 +159,7 @@ export default function ModalVeiculos() {
             placa: veiculo.placa,
             ano: veiculo.ano,
             modelo: veiculo.model.modelo,
-            user: veiculo.user,
+            user: veiculo.user.username,
             veichleCondition: veiculo.veiculoCondicao            
 
         })
