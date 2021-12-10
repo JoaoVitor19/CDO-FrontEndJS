@@ -119,7 +119,6 @@ const Login = ({ navigation }) => {
 
                             <Botao labelButton={"Login"} onPress={onSubmit} />
                         </View>
-
                         <View style={styles.texto_conexao}>
                             <Text style={styles.problemas_texto} >
                                 Problemas para se conectar?
