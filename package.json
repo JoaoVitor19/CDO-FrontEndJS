@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "node_modules/.bin/jest",
+    "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -37,17 +38,22 @@
     "@babel/preset-env": "^7.16.4",
     "@testing-library/react-native": "^9.0.0",
     "@types/jest": "^27.0.3",
+    "babel-install": "2.1.0",
     "babel-jest": "^27.4.2",
+    "jest-expo": "^43.0.1",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.1.0",
     "typescript": "^4.5.2"
   },
   "private": true,
   "jest": {
-    "preset": "ts-jest",
+    "preset": "react-native",
     "transform": {
       "^.+\\.(ts|tsx)?$": "ts-jest",
       "^.+\\.(js|jsx)?$": "babel-jest"
+    },
+    "globals": {
+      "__DEV__": true
     },
     "cacheDirectory": "./cache",
     "coveragePathIgnorePatterns": [
@@ -59,7 +65,8 @@
       }
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!@react-native|react-native)"
+      "node_modules/(?!@react-native|react-native)",
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
     ]
   }
 }

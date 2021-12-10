@@ -1,0 +1,45 @@
+39ae266348e35da6cbd15b37d4a0a60a
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _reactNative = require("react-native");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var Button = function Button(_ref) {
+  var labelButton = _ref.labelButton,
+      onPress = _ref.onPress;
+  return React.createElement(_reactNative.TouchableOpacity, {
+    style: styles.button,
+    onPress: onPress
+  }, React.createElement(_reactNative.Text, {
+    style: styles.texto
+  }, labelButton));
+};
+
+var styles = _reactNative.StyleSheet.create({
+  button: {
+    backgroundColor: '#FB0000',
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 100,
+    paddingRight: 100,
+    borderRadius: 18,
+    marginTop: 20
+  },
+  texto: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold'
+  }
+});
+
+var _default = Button;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkJ1dHRvbi5qcyJdLCJuYW1lcyI6WyJCdXR0b24iLCJsYWJlbEJ1dHRvbiIsIm9uUHJlc3MiLCJzdHlsZXMiLCJidXR0b24iLCJ0ZXh0byIsIlN0eWxlU2hlZXQiLCJjcmVhdGUiLCJiYWNrZ3JvdW5kQ29sb3IiLCJwYWRkaW5nVG9wIiwicGFkZGluZ0JvdHRvbSIsInBhZGRpbmdMZWZ0IiwicGFkZGluZ1JpZ2h0IiwiYm9yZGVyUmFkaXVzIiwibWFyZ2luVG9wIiwiY29sb3IiLCJmb250U2l6ZSIsImZvbnRXZWlnaHQiXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUE7O0FBQ0E7Ozs7OztBQUVBLElBQU1BLE1BQU0sR0FBRyxTQUFUQSxNQUFTLE9BQTRCO0FBQUEsTUFBMUJDLFdBQTBCLFFBQTFCQSxXQUEwQjtBQUFBLE1BQWJDLE9BQWEsUUFBYkEsT0FBYTtBQUV2QyxTQUNJLG9CQUFDLDZCQUFEO0FBQ0EsSUFBQSxLQUFLLEVBQUVDLE1BQU0sQ0FBQ0MsTUFEZDtBQUVBLElBQUEsT0FBTyxFQUFFRjtBQUZULEtBS0ksb0JBQUMsaUJBQUQ7QUFBTSxJQUFBLEtBQUssRUFBRUMsTUFBTSxDQUFDRTtBQUFwQixLQUNLSixXQURMLENBTEosQ0FESjtBQVlILENBZEQ7O0FBZ0JBLElBQU1FLE1BQU0sR0FBR0csd0JBQVdDLE1BQVgsQ0FBa0I7QUFDN0JILEVBQUFBLE1BQU0sRUFBRTtBQUNKSSxJQUFBQSxlQUFlLEVBQUMsU0FEWjtBQUVKQyxJQUFBQSxVQUFVLEVBQUUsRUFGUjtBQUdKQyxJQUFBQSxhQUFhLEVBQUUsRUFIWDtBQUlKQyxJQUFBQSxXQUFXLEVBQUMsR0FKUjtBQUtKQyxJQUFBQSxZQUFZLEVBQUUsR0FMVjtBQU1KQyxJQUFBQSxZQUFZLEVBQUUsRUFOVjtBQU9KQyxJQUFBQSxTQUFTLEVBQUU7QUFQUCxHQURxQjtBQVk3QlQsRUFBQUEsS0FBSyxFQUFDO0FBQ0ZVLElBQUFBLEtBQUssRUFBRSxPQURMO0FBRUZDLElBQUFBLFFBQVEsRUFBRSxFQUZSO0FBR0ZDLElBQUFBLFVBQVUsRUFBRTtBQUhWO0FBWnVCLENBQWxCLENBQWY7O2VBbUJlakIsTSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAqIGFzIFJlYWN0IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHtTdHlsZVNoZWV0LCBUZXh0LCBUb3VjaGFibGVPcGFjaXR5fSBmcm9tICdyZWFjdC1uYXRpdmUnXHJcblxyXG5jb25zdCBCdXR0b24gPSAoe2xhYmVsQnV0dG9uLCBvblByZXNzfSkgPT4ge1xyXG5cclxuICAgIHJldHVybihcclxuICAgICAgICA8VG91Y2hhYmxlT3BhY2l0eVxyXG4gICAgICAgIHN0eWxlPXtzdHlsZXMuYnV0dG9ufVxyXG4gICAgICAgIG9uUHJlc3M9e29uUHJlc3N9IFxyXG4gICAgICAgID5cclxuICAgICAgICAgICAgXHJcbiAgICAgICAgICAgIDxUZXh0IHN0eWxlPXtzdHlsZXMudGV4dG99PlxyXG4gICAgICAgICAgICAgICAge2xhYmVsQnV0dG9ufVxyXG4gICAgICAgICAgICA8L1RleHQ+XHJcbiAgICAgICAgPC9Ub3VjaGFibGVPcGFjaXR5PlxyXG4gICAgKVxyXG5cclxufVxyXG5cclxuY29uc3Qgc3R5bGVzID0gU3R5bGVTaGVldC5jcmVhdGUoe1xyXG4gICAgYnV0dG9uOiB7XHJcbiAgICAgICAgYmFja2dyb3VuZENvbG9yOicjRkIwMDAwJyxcclxuICAgICAgICBwYWRkaW5nVG9wOiAxNSxcclxuICAgICAgICBwYWRkaW5nQm90dG9tOiAxNSxcclxuICAgICAgICBwYWRkaW5nTGVmdDoxMDAsXHJcbiAgICAgICAgcGFkZGluZ1JpZ2h0OiAxMDAsXHJcbiAgICAgICAgYm9yZGVyUmFkaXVzOiAxOCxcclxuICAgICAgICBtYXJnaW5Ub3A6IDIwXHJcblxyXG4gICAgfSxcclxuXHJcbiAgICB0ZXh0bzp7XHJcbiAgICAgICAgY29sb3I6ICd3aGl0ZScsXHJcbiAgICAgICAgZm9udFNpemU6IDE4LFxyXG4gICAgICAgIGZvbnRXZWlnaHQ6ICdib2xkJyxcclxuICAgIH1cclxufSlcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEJ1dHRvbiJdfQ==

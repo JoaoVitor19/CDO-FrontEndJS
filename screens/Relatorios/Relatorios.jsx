@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+//import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient'
 import { VeichleContext } from '../../App';
 import Menu from '../../components/Menu/Menu'
@@ -28,7 +28,7 @@ export default function Relatorios() {
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background} />
-            <StatusBar hidden />
+            {/* <StatusBar hidden /> */}
             <Menu title="Relatórios"/>
             <View style={styles.boxRelatorios}>
                 <><View style={styles.containerRelatorios}>
