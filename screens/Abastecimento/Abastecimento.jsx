@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/abastecimento'
-import { FAB } from 'react-native-paper';
+import { VeichleContext } from '../../App';
+import ModalAbastecimento from './modal/ModalAbast';
 
 const styles = StyleSheet.create({
     flex: {
@@ -13,6 +14,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginTop: 5
     },
+
 
     flexPosto: {
         width: '100%',
@@ -57,29 +59,17 @@ const styles = StyleSheet.create({
     textStyle: {
         fontSize: 18,
         fontWeight: 'bold'
-    },
-    fab: {
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'absolute',
-        alignItems: 'center',
-        width: 80,
-        backgroundColor: '#FC5656',
-        height: 80,
-        borderRadius: 100,
-        margin: 16,
-        right: 0,
-        bottom: 0,
     }
+
 })
 
 export default function Abastecimento() {
 
-    const [data, setData] = useState([''])
-
+    const [data, setData] = useState([])
+    const veichle = useContext(VeichleContext)
     const getData = async () => {
 
-        const response = await api.get("/")
+        const response = await api.get(`/veiculo/${veichle.veichle.id}`)
 
         setData(response.data)
         return response.data
@@ -91,12 +81,7 @@ export default function Abastecimento() {
 
     return (
         <ScrollView>
-            <FAB
-                style={styles.fab}
-                icon="plus" 
-                onPress={() => console.log('Pressed')}
-                color="white"
-            />
+
             <LinearGradient
                 colors={['#70F6C6', '#227878', '#227878']}
                 style={styles.background}>
@@ -117,10 +102,18 @@ export default function Abastecimento() {
                                     <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
                                 </View>
                             </View>
+
                         )}
                     </View>
+
+                    {/* <ModalAbastecimento /> */}
+
                 </View>
+
             </LinearGradient>
+
+
+
         </ScrollView>
     );
 }
