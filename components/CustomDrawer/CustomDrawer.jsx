@@ -96,8 +96,8 @@ export default function CustomDrawer({props,navigation}) {
 
 const Styles = StyleSheet.create({
     pngOleo: {
-        width: 70,
-        height: 70,
+        width: 90,
+        height: 90,
         marginLeft: 7
     },
     iconAbs: {

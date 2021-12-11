@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Portal, Modal, Button, IconButton } from 'react-native-paper';
 
+
 const styles = StyleSheet.create({
     plusButton: {
         backgroundColor: '#ff595e',
