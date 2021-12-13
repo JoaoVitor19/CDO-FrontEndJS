@@ -1,15 +1,12 @@
 
 import React, { useState, useEffect, useContext } from 'react';
-
 import {
-    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity
+    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity, ScrollView
 } from 'react-native';
 import { Portal, Modal, Button } from 'react-native-paper';
-
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
-import { TouchableOpacityBase } from 'react-native';
 import { VeichleContext } from '../App';
 
 
@@ -124,10 +121,8 @@ const styles = StyleSheet.create({
 export default function ModalVeiculos() {
 
     const [state, setState] = useState()
-    const [value, setValue] = useState("");
     const [stateB, setStateB] = useState()
     const [data, setData] = useState([])
-    const [id, setId] = useState(null)
     const [placa, setPlaca] = useState("")
     const [ano, setAno] = useState()
 
@@ -144,7 +139,7 @@ export default function ModalVeiculos() {
         setState(null)
     }
 
-    const {veichle, setVeichle} = useContext(VeichleContext)
+    const { veichle, setVeichle } = useContext(VeichleContext)
     const onClick = (veiculo) => {
         navigation.navigate('Relatórios')
 
@@ -155,11 +150,11 @@ export default function ModalVeiculos() {
             ano: veiculo.ano,
             modelo: veiculo.model.modelo,
             user: veiculo.user,
-            veichleCondition: veiculo.veiculoCondicao            
+            veichleCondition: veiculo.veiculoCondicao
 
         })
-
-        // console.log('onClick', veiculo)
+    }
+    // console.log('onClick', veiculo)
 
     const displayModalB = id => {
         setStateB(id)
@@ -230,7 +225,7 @@ export default function ModalVeiculos() {
                                 </Animated.View>
                             )}
                         >
-                            <TouchableOpacity onPress={() => navigation.navigate('Relatórios', veiculos.id)} >
+                            <TouchableOpacity onPress={() => onClick(veiculos)} >
                                 <View style={styles.modalBack}>
                                     <View style={styles.flex}>
                                         <View style={styles.textMargin}>
@@ -327,4 +322,3 @@ export default function ModalVeiculos() {
         </View>
     );
 }
-
