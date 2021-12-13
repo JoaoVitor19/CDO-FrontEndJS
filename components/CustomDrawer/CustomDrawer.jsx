@@ -14,7 +14,7 @@ export default function CustomDrawer({props,navigation}) {
                 <View style={Styles.drawerItems}>
                     <Image source={require('../../assets/images/oleoIcon.png')} style={Styles.pngOleo} />
                     <View style={{ marginLeft: 25, justifyContent: 'center' }}>
-                        <Text style={Styles.drawerName} >{veichle.veichle.user}</Text>
+                        <Text style={Styles.drawerName} >{veichle.veichle.user.name}</Text>
                         <View style={Styles.drawerHead}>
                             <Text style={{fontWeight:"bold"}} >{veichle.veichle.modelo}</Text>
                             <Text style={{fontWeight:"bold"}} >{veichle.veichle.placa}</Text>
@@ -96,8 +96,8 @@ export default function CustomDrawer({props,navigation}) {
 
 const Styles = StyleSheet.create({
     pngOleo: {
-        width: 70,
-        height: 70,
+        width: 90,
+        height: 90,
         marginLeft: 7
     },
     iconAbs: {

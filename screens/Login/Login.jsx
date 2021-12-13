@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Image, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Image, Text, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Linking } from 'react-native';
 import Botao from '../../components/Botao/Button'
 import { LinearGradient } from 'expo-linear-gradient'
 import Instance from "./config"
@@ -119,17 +119,19 @@ const Login = ({ navigation }) => {
 
                             <Botao labelButton={"Login"} onPress={onSubmit} />
                         </View>
-
                         <View style={styles.texto_conexao}>
                             <Text style={styles.problemas_texto} >
                                 Problemas para se conectar?
                             </Text>
                         </View>
+                        <TouchableOpacity
+                        onPress={() => Linking.openURL('https://google.com')}>
                         <View style={styles.contate}>
                             <Text style={styles.contate_texto}>
                                 Contate a casa do Oleo
                             </Text>
                         </View>
+                        </TouchableOpacity>
                     </View>
 
                 </LinearGradient>
