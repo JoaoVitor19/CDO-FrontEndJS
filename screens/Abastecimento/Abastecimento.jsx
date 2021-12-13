@@ -5,6 +5,7 @@ import api from '../../api/abastecimento'
 import Menu from '../../components/Menu/Menu'
 import { VeichleContext } from '../../App';
 import ModalAbastecimento from './modal/ModalAbast';
+import { FAB } from 'react-native-paper'
 
 const styles = StyleSheet.create({
     flex: {
@@ -82,48 +83,36 @@ export default function Abastecimento() {
 
     return (
         <>
-            <ScrollView>
-                <Menu title="Abastecimento" style={{ marginRight: 30 }} />
-                <LinearGradient
-                    colors={['#70F6C6', '#227878', '#227878']}
-                    style={styles.background}>
-                    <SafeAreaView>
-                        <ScrollView>
-                            <View style={styles.background}>
-                                <View style={styles.box}>
-                                    {data.map((abastecimento) =>
-                                        <View style={styles.aloneBox} key={abastecimento.id}>
-                                            <View style={styles.flex}>
-                                                <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
-                                                <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
-                                            </View>
-                                            <View style={styles.flexPosto}>
-                                                <Text style={styles.posto}>Posto de Combustivel</Text>
-                                                <Text></Text>
-                                            </View>
-                                            <View style={styles.flex}>
-                                                <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
-                                                <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
-                                            </View>
-                                        </View>
-
-                                    )}
+            <Menu title="Abastecimento" style={{ marginRight: 30 }} />
+            <LinearGradient
+                colors={['#70F6C6', '#227878', '#227878']}
+                style={styles.background}>
+                <ScrollView>
+                    <View style={styles.background}>
+                        <View style={styles.box}>
+                            {data.map((abastecimento) =>
+                                <View style={styles.aloneBox} key={abastecimento.id}>
+                                    <View style={styles.flex}>
+                                        <Text style={styles.textStyle}>{abastecimento.combustivel.tcombustivel}</Text>
+                                        <Text style={styles.textStyle}>{abastecimento.litros}L</Text>
+                                    </View>
+                                    <View style={styles.flexPosto}>
+                                        <Text style={styles.posto}>Posto de Combustivel</Text>
+                                        <Text></Text>
+                                    </View>
+                                    <View style={styles.flex}>
+                                        <Text style={styles.textStyle}>R${abastecimento.vlLitro}</Text>
+                                        <Text style={styles.textStyle}>{abastecimento.dataTime}</Text>
+                                    </View>
                                 </View>
-                            </View>
-                        </ScrollView>
-                    </SafeAreaView>
-                    <FAB
-                        style={styles.fab}
-                        icon="plus"
-                        onPress={() => console.log('Pressed')}
-                        color="white"
-                    />
-                    {/* <ModalAbastecimento /> */}
+
+                            )}
+                            <ModalAbastecimento />
+                        </View>
+                    </View>
+
+                </ScrollView>
             </LinearGradient>
-
-
-
-        </ScrollView>
         </>
     );
 }
