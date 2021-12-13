@@ -32,15 +32,15 @@ export default function Veiculos() {
 
     return (
         <View >
-                    <LinearGradient
-                        colors={['#70F6C6', '#227878', '#227878']}
-                        style={styles.background}>
-                            <Provider>
-                                <View style={styles.container} >
-                                    <ModalVeiculos />
-                                </View>
-                            </Provider>
-                    </LinearGradient>
+            <LinearGradient
+                colors={['#70F6C6', '#227878', '#227878']}
+                style={styles.background}>
+                <Provider>
+                    <View style={styles.container} >
+                        <ModalVeiculos />
+                    </View>
+                </Provider>
+            </LinearGradient>
         </View>
     );
 }
