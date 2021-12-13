@@ -9,7 +9,6 @@ import { Portal, Modal, Button } from 'react-native-paper';
 import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
-import { TouchableOpacityBase } from 'react-native';
 import { VeichleContext } from '../App';
 
 
@@ -323,8 +322,6 @@ export default function ModalVeiculos() {
                 ))
                 }
             </ScrollView >
-            {/* <NewVeiculo /> */}
         </View>
     );
 }
-
