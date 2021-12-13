@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useContext } from 'react';
+
 import {
     StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity
 } from 'react-native';
 import { Portal, Modal, Button } from 'react-native-paper';
-import { Swipeable, RectButton, ScrollView } from 'react-native-gesture-handler';
+
+import { Swipeable, RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
-import NewVeiculo from './NewVeiculo';
-
+import { TouchableOpacityBase } from 'react-native';
+import { VeichleContext } from '../App';
 
 
 const styles = StyleSheet.create({
@@ -121,6 +124,7 @@ const styles = StyleSheet.create({
 export default function ModalVeiculos() {
 
     const [state, setState] = useState()
+    const [value, setValue] = useState("");
     const [stateB, setStateB] = useState()
     const [data, setData] = useState([])
     const [id, setId] = useState(null)
@@ -139,6 +143,23 @@ export default function ModalVeiculos() {
     const closeModal = () => {
         setState(null)
     }
+
+    const {veichle, setVeichle} = useContext(VeichleContext)
+    const onClick = (veiculo) => {
+        navigation.navigate('Relatórios')
+
+        setVeichle({
+            ...veichle,
+            id: veiculo.id,
+            placa: veiculo.placa,
+            ano: veiculo.ano,
+            modelo: veiculo.model.modelo,
+            user: veiculo.user,
+            veichleCondition: veiculo.veiculoCondicao            
+
+        })
+
+        // console.log('onClick', veiculo)
 
     const displayModalB = id => {
         setStateB(id)
