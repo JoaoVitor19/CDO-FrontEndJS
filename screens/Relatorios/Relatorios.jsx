@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, } from 'react-native';
-//import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient'
 import { VeichleContext } from '../../App';
 import Menu from '../../components/Menu/Menu'
@@ -16,6 +15,7 @@ export default function Relatorios() {
 
         setData(response.data)
         return response.data
+        
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export default function Relatorios() {
                 <><View style={styles.containerRelatorios}>
                     <View style={{ justifyContent: 'space-between' }} >
                         <View style={styles.viewBox}>
-                            <Text style={styles.valoresContainerRelatorios}>R$ 1000,00</Text>
+                            <Text style={styles.valoresContainerRelatorios}>R$ {}</Text>
                             <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
                         </View>
                         <View style={styles.viewBox}>
@@ -49,11 +49,11 @@ export default function Relatorios() {
                     <View style={styles.containerRelatorios}>
                         <View style={{ justifyContent: 'space-between' }}>
                             <View style={styles.viewBox}>
-                                <Text style={styles.valoresContainerRelatorios}>R$ 2000,00</Text>
+                                <Text style={styles.valoresContainerRelatorios}>R${}</Text>
                                 <Text style={styles.gastoContainerRelatorios}> Gasto Total </Text>
                             </View>
                             <View style={styles.viewBox}>
-                                <Text style={styles.dataContainerRelatorios}>{veichle.veichle.date}</Text>
+                                <Text style={styles.dataContainerRelatorios}>{}</Text>
                                 <Text style={styles.textContainerRelatorios}>Ultima Manutenção</Text>
                             </View>
                         </View>
@@ -62,7 +62,7 @@ export default function Relatorios() {
                         <Image style={styles.imgFimRelatorios} source={require('../../assets/moneyimg.png')} />
                         <View style={{ alignItems: 'center' }}>
                             <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 22 }}>Gasto Total</Text>
-                            <Text style={{ color: 'white', fontSize: 20 }}>R$ 3.000,00</Text>
+                            <Text style={{ color: 'white', fontSize: 20 }}>R$ {}</Text>
                         </View>
                         <Image style={styles.imgFimRelatorios} source={require('../../assets/graficoimg.png')} />
                     </View></>

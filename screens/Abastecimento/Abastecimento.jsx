@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import api from '../../api/abastecimento'
 import Menu from '../../components/Menu/Menu'
@@ -112,18 +112,11 @@ export default function Abastecimento() {
                             </View>
                         </ScrollView>
                     </SafeAreaView>
-                    <FAB
-                        style={styles.fab}
-                        icon="plus"
-                        onPress={() => console.log('Pressed')}
-                        color="white"
-                    />
-                    {/* <ModalAbastecimento /> */}
-            </LinearGradient>
+                </LinearGradient>
 
 
 
-        </ScrollView>
+            </ScrollView>
         </>
     );
 }
