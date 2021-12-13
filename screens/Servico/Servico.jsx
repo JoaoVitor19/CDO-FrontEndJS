@@ -1,6 +1,7 @@
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient'
-import {View, Text, StyleSheet, Image, Linking, TouchableHighlight } from 'react-native'
+import { View, Text, StyleSheet, Image, Linking, TouchableOpacity } from 'react-native'
+import Menu from '../../components/Menu/Menu'
 
 const styles = StyleSheet.create({
 
@@ -10,12 +11,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingBottom: 100
     },
 
     textStyle: {
         fontSize: 25,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 30
     },
 
     pngOleo: {
@@ -28,30 +31,31 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Servico (){
+export default function Servico() {
 
-return(
-    <LinearGradient
-    colors={['#70F6C6', '#227878', '#227878']}
-    style={styles.background}>
-    <View style={styles.background}>
-    <Text style={styles.textStyle}>
-           Clique no botão
-       </Text>
-       <Text style={styles.textStyle}>
-           e entre em contato com a gente 
-       </Text>
-       <Text style={styles.textStyle} >
-           para agendar seu serviço!
-           
-       </Text>
-       <TouchableHighlight 
-        onPress={() => Linking.openURL('https://google.com')}>
-       <Image source={require('../../assets/images/whats.png')} style={styles.pngOleo}  />
-       </TouchableHighlight>
-    </View>
-</LinearGradient>
+    return (
+        <View>
+            <Menu title="Serviços" />
+            <LinearGradient
+                colors={['#70F6C6', '#227878', '#227878']}
+                style={styles.background}>
+                <View style={styles.background}>
+                    <Text style={styles.textStyle}>
+                        Clique no botão
+                    </Text>
+                    <Text style={styles.textStyle}>
+                        e entre em contato com a gente
+                    </Text>
+                    <Text style={styles.textStyle} >
+                        para agendar seu serviço!
 
-)
-
+                    </Text>
+                    <TouchableOpacity
+                        onPress={() => Linking.openURL('https://google.com')}>
+                        <Image source={require('../../assets/images/whats.png')} style={styles.pngOleo} />
+                    </TouchableOpacity>
+                </View>
+            </LinearGradient>
+        </View>
+    )
 }

@@ -1,0 +1,24 @@
+c9fb5c0504fbb06c41fe3b962ebcc9a4
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactNative = require("@testing-library/react-native");
+
+var Relatorio = require("../screens/Relatorios/Relatorios");
+
+describe('Login', function () {
+  test('should render', function () {
+    var navigation = {
+      navigate: function navigate() {}
+    };
+
+    var _render = (0, _reactNative.render)(_react.default.createElement(Relatorio, {
+      navigation: navigation
+    })),
+        toJSON = _render.toJSON;
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLnRlc3QuanMiXSwibmFtZXMiOlsiUmVsYXRvcmlvIiwicmVxdWlyZSIsImRlc2NyaWJlIiwidGVzdCIsIm5hdmlnYXRpb24iLCJuYXZpZ2F0ZSIsInRvSlNPTiIsImV4cGVjdCIsInRvTWF0Y2hTbmFwc2hvdCJdLCJtYXBwaW5ncyI6Ijs7QUFDQTs7QUFDQTs7QUFFQSxJQUFNQSxTQUFTLEdBQUdDLE9BQU8sb0NBQXpCOztBQUNBQyxRQUFRLENBQUMsT0FBRCxFQUFVLFlBQU07QUFDcEJDLEVBQUFBLElBQUksQ0FBQyxlQUFELEVBQWtCLFlBQU07QUFDeEIsUUFBTUMsVUFBVSxHQUFHO0FBQUVDLE1BQUFBLFFBQVEsRUFBRSxvQkFBTSxDQUFHO0FBQXJCLEtBQW5COztBQUNBLGtCQUFtQix5QkFBTyw2QkFBQyxTQUFEO0FBQVcsTUFBQSxVQUFVLEVBQUVEO0FBQXZCLE1BQVAsQ0FBbkI7QUFBQSxRQUFRRSxNQUFSLFdBQVFBLE1BQVI7O0FBRUFDLElBQUFBLE1BQU0sQ0FBQ0QsTUFBTSxFQUFQLENBQU4sQ0FBaUJFLGVBQWpCO0FBQ0gsR0FMRyxDQUFKO0FBTUgsQ0FQTyxDQUFSIiwic291cmNlc0NvbnRlbnQiOlsiLyogZ2xvYmFsIF9fREVWX18gKi9cclxuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xyXG5pbXBvcnQgeyByZW5kZXIgfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0LW5hdGl2ZSdcclxuLy9pbXBvcnQgUmVsYXRvcmlvIGZyb20gJy4uL3NjcmVlbnMvUmVsYXRvcmlvcy9SZWxhdG9yaW9zJ1xyXG5jb25zdCBSZWxhdG9yaW8gPSByZXF1aXJlKCcuLi9zY3JlZW5zL1JlbGF0b3Jpb3MvUmVsYXRvcmlvcycpXHJcbmRlc2NyaWJlKCdMb2dpbicsICgpID0+IHtcclxuICAgIHRlc3QoJ3Nob3VsZCByZW5kZXInLCAoKSA9PiB7XHJcbiAgICAgICAgY29uc3QgbmF2aWdhdGlvbiA9IHsgbmF2aWdhdGU6ICgpID0+IHsgfSB9XHJcbiAgICAgICAgY29uc3QgeyB0b0pTT04gfSA9IHJlbmRlcig8UmVsYXRvcmlvIG5hdmlnYXRpb249e25hdmlnYXRpb259IC8+KVxyXG5cclxuICAgICAgICBleHBlY3QodG9KU09OKCkpLnRvTWF0Y2hTbmFwc2hvdCgpXHJcbiAgICB9KVxyXG59KSJdfQ==

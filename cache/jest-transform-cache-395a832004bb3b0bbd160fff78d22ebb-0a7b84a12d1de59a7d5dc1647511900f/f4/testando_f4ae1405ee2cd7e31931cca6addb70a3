@@ -1,0 +1,16 @@
+111b95556087f5e1c1c90c75d6e85492
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Testando;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactNative = require("react-native");
+
+function Testando() {
+  return _react.default.createElement(_reactNative.View, null, _react.default.createElement(_reactNative.View, null, _react.default.createElement(_reactNative.Text, null, "Problemas para se conectar?")), _react.default.createElement(_reactNative.View, null, _react.default.createElement(_reactNative.Text, null, "Contate a casa do Oleo")));
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3RhbmRvLmpzeCJdLCJuYW1lcyI6WyJUZXN0YW5kbyJdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBOztBQUNBOztBQUdlLFNBQVNBLFFBQVQsR0FBb0I7QUFDL0IsU0FDSSw2QkFBQyxpQkFBRCxRQUNJLDZCQUFDLGlCQUFELFFBQ0ksNkJBQUMsaUJBQUQsc0NBREosQ0FESixFQU1JLDZCQUFDLGlCQUFELFFBQ0ksNkJBQUMsaUJBQUQsaUNBREosQ0FOSixDQURKO0FBY0giLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXHJcbmltcG9ydCB7IFZpZXcsIFRleHQgfSBmcm9tICdyZWFjdC1uYXRpdmUnXHJcblxyXG5cclxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gVGVzdGFuZG8oKSB7XHJcbiAgICByZXR1cm4gKFxyXG4gICAgICAgIDxWaWV3PlxyXG4gICAgICAgICAgICA8VmlldyA+XHJcbiAgICAgICAgICAgICAgICA8VGV4dD5cclxuICAgICAgICAgICAgICAgICAgICBQcm9ibGVtYXMgcGFyYSBzZSBjb25lY3Rhcj9cclxuICAgICAgICAgICAgICAgIDwvVGV4dD5cclxuICAgICAgICAgICAgPC9WaWV3PlxyXG4gICAgICAgICAgICA8VmlldyA+XHJcbiAgICAgICAgICAgICAgICA8VGV4dCA+XHJcbiAgICAgICAgICAgICAgICAgICAgQ29udGF0ZSBhIGNhc2EgZG8gT2xlb1xyXG4gICAgICAgICAgICAgICAgPC9UZXh0PlxyXG4gICAgICAgICAgICA8L1ZpZXc+XHJcbiAgICAgICAgPC9WaWV3PlxyXG4gICAgKVxyXG59Il19
