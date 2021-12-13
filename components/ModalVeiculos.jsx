@@ -1,13 +1,13 @@
-
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity, ScrollView
+    StyleSheet, Text, View, Image, Animated, TextInput, TouchableOpacity
 } from 'react-native';
 import { Portal, Modal, Button } from 'react-native-paper';
-import { Swipeable, RectButton } from 'react-native-gesture-handler';
+import { Swipeable, RectButton, ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import api from '../api/veiculo';
-import { VeichleContext } from '../App';
+import NewVeiculo from './NewVeiculo';
+
 
 
 const styles = StyleSheet.create({
@@ -123,6 +123,7 @@ export default function ModalVeiculos() {
     const [state, setState] = useState()
     const [stateB, setStateB] = useState()
     const [data, setData] = useState([])
+    const [id, setId] = useState(null)
     const [placa, setPlaca] = useState("")
     const [ano, setAno] = useState()
 
@@ -138,23 +139,6 @@ export default function ModalVeiculos() {
     const closeModal = () => {
         setState(null)
     }
-
-    const { veichle, setVeichle } = useContext(VeichleContext)
-    const onClick = (veiculo) => {
-        navigation.navigate('Relatórios')
-
-        setVeichle({
-            ...veichle,
-            id: veiculo.id,
-            placa: veiculo.placa,
-            ano: veiculo.ano,
-            modelo: veiculo.model.modelo,
-            user: veiculo.user,
-            veichleCondition: veiculo.veiculoCondicao
-
-        })
-    }
-    // console.log('onClick', veiculo)
 
     const displayModalB = id => {
         setStateB(id)
@@ -225,7 +209,7 @@ export default function ModalVeiculos() {
                                 </Animated.View>
                             )}
                         >
-                            <TouchableOpacity onPress={() => onClick(veiculos)} >
+                            <TouchableOpacity onPress={() => navigation.navigate('Relatórios', veiculos.id)} >
                                 <View style={styles.modalBack}>
                                     <View style={styles.flex}>
                                         <View style={styles.textMargin}>
@@ -322,3 +306,4 @@ export default function ModalVeiculos() {
         </View>
     );
 }
+
